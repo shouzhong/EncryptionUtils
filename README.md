@@ -9,7 +9,7 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
 ### 使用说明
 #### AESUtils
 * encrypt2Base64
-<html>
+<p>
     <table>
       <tr>
         <th width=10%, bgcolor=yellow >参数</th>
@@ -31,7 +31,7 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
         <td>  逆序排列 </td>
       </tr>
     </table>
-</html>
+</p>
 #### DES3Utils
 #### DESUtils
 #### MD5Utils
