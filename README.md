@@ -8,7 +8,6 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
 ```
 ### 使用说明
 #### AESUtils
-##### encrypt2Base64
 方法名 | 说明
 ------------ | -------------
 byte[] encrypt2Base64(final byte[] data, final byte[] key) | AES加密后转为Base64编码</br>@param data 明文</br>@param key  16、24、32字节秘钥</br>@return Base64密文
