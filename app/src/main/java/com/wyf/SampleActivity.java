@@ -143,13 +143,13 @@ public class SampleActivity extends AppCompatActivity {
         try {
             byte[] s1 = RSAUtils.encryptByPrivateKey(PRIVATE_KEY, data.getBytes());
             tv.append("encryptByPrivateKey->" + HexUtils.bytes2HexString(s1) + "\n");
-            String s2 = RSAUtils.encryptByPublicKey(PUBLIC_KEY, data);
+            String s2 = RSAUtils.encryptBase64ByPublicKey(PUBLIC_KEY, data);
             tv.append("encryptByPublicKey->" + s2 + "\n");
-            String s3 = RSAUtils.encrypt2NetByPublicKey(PUBLIC_KEY, data);
+            String s3 = RSAUtils.encryptBase64ToNetByPublicKey(PUBLIC_KEY, data);
             tv.append("encrypt2NetByPublicKey->" + s3 + "\n");
-            String s4 = RSAUtils.decryptByPrivateKey(PRIVATE_KEY, s2);
+            String s4 = RSAUtils.decryptBase64ByPrivateKey(PRIVATE_KEY, s2);
             tv.append("decryptByPrivateKey->" + s4 + "\n");
-            String s5 = RSAUtils.decryptFromNetByPrivateKey(PRIVATE_KEY, s3);
+            String s5 = RSAUtils.decryptBase64FromNetByPrivateKey(PRIVATE_KEY, s3);
             tv.append("decryptFromNetByPrivateKey->" + s5 + "\n");
             byte[] s6 = RSAUtils.decryptByPublicKey(PUBLIC_KEY, s1);
             tv.append("decryptByPublicKey->" + new String(s6) + "\n");

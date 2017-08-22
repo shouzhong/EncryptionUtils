@@ -118,8 +118,8 @@ public class RSAUtils {
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptFromNetByPrivateKey(String privateKey, String encrypted) throws Exception {
-        return decryptFromNetByPrivateKey(getPrivateKey(privateKey), encrypted);
+    public static String decryptBase64FromNetByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decryptBase64FromNetByPrivateKey(getPrivateKey(privateKey), encrypted);
     }
 
     /**
@@ -130,14 +130,14 @@ public class RSAUtils {
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptFromNetByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+    public static String decryptBase64FromNetByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
         encrypted = encrypted.replace("-", "+").replace("_", "/");
         int mod4 = encrypted.length() / 4;
         for (int i = 0; i < mod4; i++) {
             encrypted += "=";
         }
         Log.e("=====", encrypted);
-        return decryptByPrivateKey(privateKey, encrypted);
+        return decryptBase64ByPrivateKey(privateKey, encrypted);
     }
 
     /**
@@ -148,7 +148,7 @@ public class RSAUtils {
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptByPrivateKey(String privateKey, String encrypted) throws Exception {
+    public static String decryptBase64ByPrivateKey(String privateKey, String encrypted) throws Exception {
         return new String(decryptByPrivateKey(getPrivateKey(privateKey), Base64.decode(encrypted)));
     }
 
@@ -160,7 +160,7 @@ public class RSAUtils {
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+    public static String decryptBase64ByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
         return new String(decryptByPrivateKey(privateKey, Base64.decode(encrypted)));
     }
 
@@ -218,8 +218,8 @@ public class RSAUtils {
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptFromNetByPublicKey(String publicKey, String encryptedData) throws Exception {
-        return decryptFromNetByPublicKey(getPublicKey(publicKey), encryptedData);
+    public static String decryptBase64FromNetByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decryptBase64FromNetByPublicKey(getPublicKey(publicKey), encryptedData);
     }
 
     /**
@@ -230,13 +230,13 @@ public class RSAUtils {
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptFromNetByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+    public static String decryptBase64FromNetByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
         encryptedData = encryptedData.replace("-", "+").replace("_", "/");
         int mod4 = encryptedData.length() / 4;
         for (int i = 0; i < mod4; i++) {
             encryptedData += "=";
         }
-        return decryptByPublicKey(publicKey, encryptedData);
+        return decryptBase64ByPublicKey(publicKey, encryptedData);
     }
 
     /**
@@ -247,7 +247,7 @@ public class RSAUtils {
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptByPublicKey(String publicKey, String encryptedData) throws Exception {
+    public static String decryptBase64ByPublicKey(String publicKey, String encryptedData) throws Exception {
         return new String(decryptByPublicKey(getPublicKey(publicKey), Base64.decode(encryptedData)));
     }
 
@@ -259,7 +259,7 @@ public class RSAUtils {
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+    public static String decryptBase64ByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
         return new String(decryptByPublicKey(publicKey, Base64.decode(encryptedData)));
     }
 
@@ -317,8 +317,8 @@ public class RSAUtils {
      * @return 加密后的数据
      * @throws Exception 异常
      */
-    public static String encrypt2NetByPrivateKey(String privateKey, String data) throws Exception {
-        return encryptByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    public static String encryptBase64ToNetByPrivateKey(String privateKey, String data) throws Exception {
+        return encryptBase64ByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
     /**
@@ -329,8 +329,8 @@ public class RSAUtils {
      * @return 加密后的数据
      * @throws Exception 异常
      */
-    public static String encrypt2NetByPrivateKey(PrivateKey privateKey, String data) throws Exception {
-        return encryptByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    public static String encryptBase64ToNetByPrivateKey(PrivateKey privateKey, String data) throws Exception {
+        return encryptBase64ByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
     /**
@@ -341,7 +341,7 @@ public class RSAUtils {
      * @return 加密后的数据
      * @throws Exception 异常
      */
-    public static String encryptByPrivateKey(String privateKey, String data) throws Exception {
+    public static String encryptBase64ByPrivateKey(String privateKey, String data) throws Exception {
         return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
     }
 
@@ -353,7 +353,7 @@ public class RSAUtils {
      * @return 加密后的数据
      * @throws Exception 异常
      */
-    public static String encryptByPrivateKey(PrivateKey privateKey, String data) throws Exception {
+    public static String encryptBase64ByPrivateKey(PrivateKey privateKey, String data) throws Exception {
         return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
     }
 
@@ -411,8 +411,8 @@ public class RSAUtils {
      * @return 加密后的字符串
      * @throws Exception 异常
      */
-    public static String encrypt2NetByPublicKey(String publicKey, String data) throws Exception {
-        return encryptByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    public static String encryptBase64ToNetByPublicKey(String publicKey, String data) throws Exception {
+        return encryptBase64ByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
     /**
@@ -423,8 +423,8 @@ public class RSAUtils {
      * @return 加密后的字符串
      * @throws Exception 异常
      */
-    public static String encrypt2NetByPublicKey(PublicKey publicKey, String data) throws Exception {
-        return encryptByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    public static String encryptBase64ToNetByPublicKey(PublicKey publicKey, String data) throws Exception {
+        return encryptBase64ByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
     /**
@@ -435,7 +435,7 @@ public class RSAUtils {
      * @return 加密后字符串
      * @throws Exception 异常
      */
-    public static String encryptByPublicKey(String publicKey, String data) throws Exception {
+    public static String encryptBase64ByPublicKey(String publicKey, String data) throws Exception {
         return Base64.encode(encryptByPublicKey(getPublicKey(publicKey), data.getBytes()));
     }
 
@@ -447,7 +447,7 @@ public class RSAUtils {
      * @return 加密后字符串
      * @throws Exception 异常
      */
-    public static String encryptByPublicKey(PublicKey publicKey, String data) throws Exception {
+    public static String encryptBase64ByPublicKey(PublicKey publicKey, String data) throws Exception {
         return Base64.encode(encryptByPublicKey(publicKey, data.getBytes()));
     }
 
