@@ -8,7 +8,7 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
 ```
 ### 使用说明
 #### AESUtils
-* encrypt2Base64
+##### encrypt2Base64
     | 一个普通标题 | 一个普通标题 | 一个普通标题 |
     | ------ | ------ | ------ |
     | 短文本 | 中等文本 | 稍微长一点的文本 |
