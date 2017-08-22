@@ -27,6 +27,14 @@ byte[] decryptBase64(final byte[] data, final byte[] key) | 3DES解密Base64编�
 byte[] decryptHexString(final String data, final byte[] key) | 3DES解密16进制密文</br>@param data 16进制密文</br>@param key  24字节秘钥</br>@return 明文
 byte[] decrypt(final byte[] data, final byte[] key) | 3DES解密</br>@param data 密文</br>@param key  24字节密钥</br>@return 明文
 #### DESUtils
+方法名 | 说明
+------------ | -------------
+byte[] encrypt2Base64(final byte[] data, final byte[] key) | DES加密后转为Base64编码</br>@param data 明文</br>@param key  8字节秘钥</br>@return Base64密文
+String encrypt2HexString(final byte[] data, final byte[] key) | DES加密后转为16进制</br>@param data 明文</br>@param key  8字节秘钥</br>@return 16进制密文
+byte[] encrypt(final byte[] data, final byte[] key) | DES加密</br>@param data 明文</br>@param key  8字节密钥</br>@return 密文
+byte[] decryptBase64(final byte[] data, final byte[] key) | DES解密Base64编码密文</br>@param data Base64编码密文</br>@param key  8字节秘钥</br>@return 明文
+byte[] decryptHexString(final String data, final byte[] key) | DES解密16进制密文</br>@param data 16进制密文</br>@param key  8字节秘钥</br>@return 明文
+byte[] decrypt(final byte[] data, final byte[] key) | DES解密</br>@param data 密文</br>@param key  8字节密钥</br>@return 明文
 #### MD5Utils
 #### RSAUtils
 #### SHA1Utils
