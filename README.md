@@ -50,6 +50,14 @@ String encryptHmac2String(final String data, final String key) | HmacMD5加密</
 String encryptHmac2String(final byte[] data, final byte[] key) | HmacMD5加密</br>@param data 明文字节数组</br>@param key 秘钥</br>@return 16进制密文
 byte[] encryptHmac(final byte[] data, final byte[] key) | HmacMD5加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### RSAUtils
+方法名 | 说明
+------------ | -------------
+KeyPair generateRSAKeyPair(int keyLength) | 随机生成RSA密钥对</br>@param keyLength 密钥长度，范围：512～2048 一般1024</br>@return 密钥对
+PrivateKey getPrivateKey(String privateKey) | 获取私钥</br>@param privateKey 私钥字符串</br>@return 私钥
+PrivateKey getPrivateKey(byte[] privateKey) | 获取私钥</br>@param privateKey 私钥数据</br>@return 私钥
+PublicKey getPublicKey(String publicKey) | 获取公钥</br>@param publicKey 公钥字符串</br>@return 公钥
+PublicKey getPublicKey(byte[] publicKey) | 获取公钥</br>@param publicKey 公钥数据</br>@return 公钥
+String decryptFromNetByPrivateKey(String privateKey, String encrypted) | 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param privateKey 私钥字符串</br>@param encrypted 加密的数据</br>@return 解密后的字符串
 #### SHA1Utils
 #### SHA256Utils
 #### SHA384Utils

@@ -59,7 +59,7 @@ public class RSAUtils {
     /**
      * 获取私钥
      *
-     * @param privateKey 私钥字符串
+     * @param privateKey 私钥数据
      * @return 私钥
      */
     public static PrivateKey getPrivateKey(byte[] privateKey) {
