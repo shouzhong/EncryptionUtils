@@ -11,7 +11,7 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
 ##### encrypt2Base64
 方法名 | 说明
 ------------ | -------------
-byte[] encrypt2Base64(final byte[] data, final byte[] key) | AES加密后转为Base64编码 @param data 明文@param key  16、24、32字节秘钥 @return Base64密文
+byte[] encrypt2Base64(final byte[] data, final byte[] key) | AES加密后转为Base64编码</br>@param data 明文</br>@param key  16、24、32字节秘钥</br>@return Base64密文
 第一列内容 | 第二列内容
 #### DES3Utils
 #### DESUtils
