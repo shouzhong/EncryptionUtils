@@ -123,7 +123,6 @@ public class MD5Utils {
             if (fis != null) {
                 try {
                     fis.close();
-                    fis = null;
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

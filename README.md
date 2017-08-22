@@ -36,6 +36,19 @@ byte[] decryptBase64(final byte[] data, final byte[] key) | DES解密Base64编�
 byte[] decryptHexString(final String data, final byte[] key) | DES解密16进制密文</br>@param data 16进制密文</br>@param key  8字节秘钥</br>@return 明文
 byte[] decrypt(final byte[] data, final byte[] key) | DES解密</br>@param data 密文</br>@param key  8字节密钥</br>@return 明文
 #### MD5Utils
+方法名 | 说明
+------------ | -------------
+String encrypt2String(final String data, final String salt) | MD5加密</br>@param data 明文字符串</br>@param salt 盐</br>@return 16进制加盐密文
+String encrypt2String(final byte[] data) | MD5加密</br>@param data 明文字节数组</br>@return 16进制密文
+String encrypt2String(final byte[] data, final byte[] salt) | MD5加密</br>@param data 明文字节数组</br>@param salt 盐字节数组</br>@return 16进制加盐密文
+byte[] encrypt(final byte[] data) | MD5加密</br>@param data 明文字节数组</br>@return 密文字节数组
+String encryptFile2String(final String filePath) | MD5加密文件</br>@param filePath 文件路径</br>@return 文件的16进制密文
+byte[] encryptFile(final String filePath) | MD5加密文件</br>@param filePath 文件路径</br>@return 文件的MD5校验码
+String encryptFile2String(final File file) | MD5加密文件</br>@param file 文件</br>@return 文件的16进制密文
+byte[] encryptFile(final File file) | MD5加密文件</br>@param file 文件</br>@return 文件的MD5校验码
+String encryptHmac2String(final String data, final String key) | HmacMD5加密</br>@param data 明文字符串</br>@param key 秘钥</br>@return 16进制密文
+String encryptHmac2String(final byte[] data, final byte[] key) | HmacMD5加密</br>@param data 明文字节数组</br>@param key 秘钥</br>@return 16进制密文
+byte[] encryptHmac(final byte[] data, final byte[] key) | HmacMD5加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### RSAUtils
 #### SHA1Utils
 #### SHA256Utils
