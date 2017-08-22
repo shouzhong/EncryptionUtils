@@ -8,6 +8,12 @@ compile 'com.wuyifeng:EncryptionUtils:1.0.0'
 ```
 ### 使用说明
 #### AESUtils
+* encrypt2Base64
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 #### DES3Utils
 #### DESUtils
 #### MD5Utils
