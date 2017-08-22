@@ -58,6 +58,19 @@ PrivateKey getPrivateKey(byte[] privateKey) | 获取私钥</br>@param privateKey
 PublicKey getPublicKey(String publicKey) | 获取公钥</br>@param publicKey 公钥字符串</br>@return 公钥
 PublicKey getPublicKey(byte[] publicKey) | 获取公钥</br>@param publicKey 公钥数据</br>@return 公钥
 String decryptFromNetByPrivateKey(String privateKey, String encrypted) | 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param privateKey 私钥字符串</br>@param encrypted 加密的数据</br>@return 解密后的字符串
+String decryptFromNetByPrivateKey(PrivateKey privateKey, String encrypted) | 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param privateKey 私钥</br>@param encrypted 加密的数据</br>@return 解密后的字符串
+String decryptByPrivateKey(String privateKey, String encrypted) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥字符串</br>@param encrypted 加密的字符串</br>@return 解密后的字符串
+String decryptByPrivateKey(PrivateKey privateKey, String encrypted) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥</br>@param encrypted 加密的字符串</br>@return 解密后的字符串
+byte[] decryptByPrivateKey(String privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥字符串</br>@param encryptedData 加密的数据</br>@return 解密后的数据
+byte[] decryptByPrivateKey(PrivateKey privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥</br>@param encryptedData 加密的数据</br>@return 解密后的数据
+String decryptFromNetByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptFromNetByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+byte[] decryptByPublicKey(String publicKey, byte[] encryptedData | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的数据
+byte[] decryptByPublicKey(PublicKey publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的数据</br>@return 解密的数据
+
+
 #### SHA1Utils
 #### SHA256Utils
 #### SHA384Utils

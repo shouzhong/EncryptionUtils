@@ -342,7 +342,7 @@ public class RSAUtils {
      * @throws Exception 异常
      */
     public static String encryptByPrivateKey(String privateKey, String data) throws Exception {
-        return new String(encryptByPrivateKey(privateKey, data.getBytes()));
+        return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
     }
 
     /**
@@ -354,7 +354,7 @@ public class RSAUtils {
      * @throws Exception 异常
      */
     public static String encryptByPrivateKey(PrivateKey privateKey, String data) throws Exception {
-        return new String(encryptByPrivateKey(privateKey, data.getBytes()));
+        return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
     }
 
     /**
