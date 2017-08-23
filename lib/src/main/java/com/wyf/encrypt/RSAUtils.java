@@ -1,7 +1,5 @@
 package com.wyf.encrypt;
 
-import android.util.Log;
-
 import java.io.ByteArrayOutputStream;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -111,57 +109,181 @@ public class RSAUtils {
     // ====================================================================================
 
     /**
-     * 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     * 解密RSA公钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
      *
      * @param privateKey 私钥字符串
      * @param encrypted 加密的数据
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64FromNetByPrivateKey(String privateKey, String encrypted) throws Exception {
-        return decryptBase64FromNetByPrivateKey(getPrivateKey(privateKey), encrypted);
+    public static String decryptBase64ToStringFromNetByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decryptBase64ToStringFromNetByPrivateKey(getPrivateKey(privateKey), encrypted);
     }
 
     /**
-     * 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     * 解密RSA公钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
      *
      * @param privateKey 私钥
      * @param encrypted 加密的数据
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64FromNetByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+    public static String decryptBase64ToStringFromNetByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
         encrypted = encrypted.replace("-", "+").replace("_", "/");
         int mod4 = encrypted.length() / 4;
         for (int i = 0; i < mod4; i++) {
             encrypted += "=";
         }
-        Log.e("=====", encrypted);
+        return decryptBase64ToStringByPrivateKey(privateKey, encrypted);
+    }
+
+    /**
+     * 解密RSA公钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的数据
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64FromNetByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decryptBase64FromNetByPrivateKey(getPrivateKey(privateKey), encrypted);
+    }
+
+    /**
+     * 解密RSA公钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的数据
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64FromNetByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+        encrypted = encrypted.replace("-", "+").replace("_", "/");
+        int mod4 = encrypted.length() / 4;
+        for (int i = 0; i < mod4; i++) {
+            encrypted += "=";
+        }
         return decryptBase64ByPrivateKey(privateKey, encrypted);
     }
 
     /**
-     * 解密RSA公钥加密过的数据
+     * 解密RSA公钥加密过的base64数据
      *
      * @param privateKey 私钥字符串
      * @param encrypted 加密的字符串
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64ByPrivateKey(String privateKey, String encrypted) throws Exception {
-        return new String(decryptByPrivateKey(getPrivateKey(privateKey), Base64.decode(encrypted)));
+    public static String decryptBase64ToStringByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decrypt2StringByPrivateKey(privateKey, Base64.decode(encrypted));
     }
 
     /**
-     * 解密RSA公钥加密过的数据
+     * 解密RSA公钥加密过的base64数据
      *
      * @param privateKey 私钥
      * @param encrypted 加密的字符串
      * @return 解密后的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64ByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
-        return new String(decryptByPrivateKey(privateKey, Base64.decode(encrypted)));
+    public static String decryptBase64ToStringByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+        return decrypt2StringByPrivateKey(privateKey, Base64.decode(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的base64数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64ByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decryptByPrivateKey(privateKey, Base64.decode(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的base64数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64ByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+        return decryptByPrivateKey(privateKey, Base64.decode(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的16进制数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的字符串
+     * @throws Exception 异常
+     */
+    public static String decryptHex2StringByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decrypt2StringByPrivateKey(privateKey, HexUtils.hexString2Bytes(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的16进制数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的字符串
+     * @throws Exception 异常
+     */
+    public static String decryptHex2StringByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+        return decrypt2StringByPrivateKey(privateKey, HexUtils.hexString2Bytes(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的16进制数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptHexByPrivateKey(String privateKey, String encrypted) throws Exception {
+        return decryptByPrivateKey(privateKey, HexUtils.hexString2Bytes(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的16进制数据
+     *
+     * @param privateKey 私钥
+     * @param encrypted 加密的字符串
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptHexByPrivateKey(PrivateKey privateKey, String encrypted) throws Exception {
+        return decryptByPrivateKey(privateKey, HexUtils.hexString2Bytes(encrypted));
+    }
+
+    /**
+     * 解密RSA公钥加密过的数据
+     *
+     * @param privateKey 私钥字符串
+     * @param encryptedData 加密的数据
+     * @return 解密后的字符串
+     * @throws Exception 异常
+     */
+    public static String decrypt2StringByPrivateKey(String privateKey, byte[] encryptedData) throws Exception {
+        return new String(decryptByPrivateKey(privateKey, encryptedData));
+    }
+
+    /**
+     * 解密RSA公钥加密过的字符串
+     *
+     * @param privateKey 私钥字符串
+     * @param encryptedData 加密的数据
+     * @return 解密后的数据
+     * @throws Exception 异常
+     */
+    public static String decrypt2StringByPrivateKey(PrivateKey privateKey, byte[] encryptedData) throws Exception {
+        return new String(decryptByPrivateKey(privateKey, encryptedData));
     }
 
     /**
@@ -211,26 +333,55 @@ public class RSAUtils {
     // ======================================================================================
 
     /**
-     * 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     * 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
      *
      * @param publicKey 公钥字符串
      * @param encryptedData 加密的字符串
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64FromNetByPublicKey(String publicKey, String encryptedData) throws Exception {
-        return decryptBase64FromNetByPublicKey(getPublicKey(publicKey), encryptedData);
+    public static String decryptBase64ToStringFromNetByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decryptBase64ToStringFromNetByPublicKey(getPublicKey(publicKey), encryptedData);
     }
 
     /**
-     * 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     * 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
      *
      * @param publicKey 公钥
      * @param encryptedData 加密的字符串
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64FromNetByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+    public static String decryptBase64ToStringFromNetByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+        encryptedData = encryptedData.replace("-", "+").replace("_", "/");
+        int mod4 = encryptedData.length() / 4;
+        for (int i = 0; i < mod4; i++) {
+            encryptedData += "=";
+        }
+        return decryptBase64ToStringByPublicKey(publicKey, encryptedData);
+    }
+
+    /**
+     * 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64FromNetByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decryptBase64FromNetByPublicKey(publicKey, encryptedData);
+    }
+
+    /**
+     * 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64FromNetByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
         encryptedData = encryptedData.replace("-", "+").replace("_", "/");
         int mod4 = encryptedData.length() / 4;
         for (int i = 0; i < mod4; i++) {
@@ -240,27 +391,123 @@ public class RSAUtils {
     }
 
     /**
-     * 解密RSA私钥加密过的数据
+     * 解密RSA私钥加密过的base64数据
      *
      * @param publicKey 公钥字符串
      * @param encryptedData 加密的字符串
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64ByPublicKey(String publicKey, String encryptedData) throws Exception {
-        return new String(decryptByPublicKey(getPublicKey(publicKey), Base64.decode(encryptedData)));
+    public static String decryptBase64ToStringByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decrypt2StringByPublicKey(getPublicKey(publicKey), Base64.decode(encryptedData));
     }
 
     /**
-     * 解密RSA私钥加密过的数据
+     * 解密RSA私钥加密过的base64数据
      *
      * @param publicKey 公钥
      * @param encryptedData 加密的字符串
      * @return 解密的字符串
      * @throws Exception 异常
      */
-    public static String decryptBase64ByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
-        return new String(decryptByPublicKey(publicKey, Base64.decode(encryptedData)));
+    public static String decryptBase64ToStringByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+        return decrypt2StringByPublicKey(publicKey, Base64.decode(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的base64数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64ByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decryptByPublicKey(publicKey, Base64.decode(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的base64数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptBase64ByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+        return decryptByPublicKey(publicKey, Base64.decode(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的16进制数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的字符串
+     * @throws Exception 异常
+     */
+    public static String decryptHex2StringByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decrypt2StringByPublicKey(publicKey, HexUtils.hexString2Bytes(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的16进制数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的字符串
+     * @throws Exception 异常
+     */
+    public static String decryptHex2StringByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+        return decrypt2StringByPublicKey(publicKey, HexUtils.hexString2Bytes(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的16进制数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptHexByPublicKey(String publicKey, String encryptedData) throws Exception {
+        return decryptByPublicKey(publicKey, HexUtils.hexString2Bytes(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的16进制数据
+     *
+     * @param publicKey 公钥
+     * @param encryptedData 加密的字符串
+     * @return 解密的数据
+     * @throws Exception 异常
+     */
+    public static byte[] decryptHexByPublicKey(PublicKey publicKey, String encryptedData) throws Exception {
+        return decryptByPublicKey(publicKey, HexUtils.hexString2Bytes(encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的数据
+     *
+     * @param publicKey 公钥字符串
+     * @param encryptedData 加密的数据
+     * @return 解密的字符串
+     * @throws Exception 异常
+     */
+    public static String decrypt2StringByPublicKey(String publicKey, byte[] encryptedData) throws Exception {
+        return new String(decryptByPublicKey(publicKey, encryptedData));
+    }
+
+    /**
+     * 解密RSA私钥加密过的数据
+     *
+     * @param publicKey 公钥字符串
+     * @param encryptedData 加密的数据
+     * @return 解密的字符串
+     * @throws Exception 异常
+     */
+    public static String decrypt2StringByPublicKey(PublicKey publicKey, byte[] encryptedData) throws Exception {
+        return new String(decryptByPublicKey(publicKey, encryptedData));
     }
 
     /**
@@ -314,7 +561,7 @@ public class RSAUtils {
      *
      * @param privateKey 私钥字符串
      * @param data 数据
-     * @return 加密后的数据
+     * @return 加密后符合网络安全的base64数据
      * @throws Exception 异常
      */
     public static String encryptBase64ToNetByPrivateKey(String privateKey, String data) throws Exception {
@@ -326,10 +573,34 @@ public class RSAUtils {
      *
      * @param privateKey
      * @param data 数据
-     * @return 加密后的数据
+     * @return 加密后符合网络安全的base64数据
      * @throws Exception 异常
      */
     public static String encryptBase64ToNetByPrivateKey(PrivateKey privateKey, String data) throws Exception {
+        return encryptBase64ByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    }
+
+    /**
+     * 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""）
+     *
+     * @param privateKey
+     * @param data 数据
+     * @return 加密后符合网络安全的base64数据
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ToNetByPrivateKey(String privateKey, byte[] data) throws Exception {
+        return encryptBase64ByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    }
+
+    /**
+     * 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""）
+     *
+     * @param privateKey
+     * @param data 数据
+     * @return 加密后符合网络安全的base64数据
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ToNetByPrivateKey(PrivateKey privateKey, byte[] data) throws Exception {
         return encryptBase64ByPrivateKey(privateKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
@@ -338,11 +609,11 @@ public class RSAUtils {
      *
      * @param privateKey 私钥
      * @param data 数据
-     * @return 加密后的数据
+     * @return 加密后base64的数据
      * @throws Exception 异常
      */
     public static String encryptBase64ByPrivateKey(String privateKey, String data) throws Exception {
-        return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
+        return Base64.encode(encryptByPrivateKey(privateKey, data));
     }
 
     /**
@@ -350,11 +621,107 @@ public class RSAUtils {
      *
      * @param privateKey 私钥
      * @param data 数据
-     * @return 加密后的数据
+     * @return 加密后base64的数据
      * @throws Exception 异常
      */
     public static String encryptBase64ByPrivateKey(PrivateKey privateKey, String data) throws Exception {
-        return Base64.encode(encryptByPrivateKey(privateKey, data.getBytes()));
+        return Base64.encode(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后base64的数据
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ByPrivateKey(String privateKey, byte[] data) throws Exception {
+        return Base64.encode(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后base64的数据
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ByPrivateKey(PrivateKey privateKey, byte[] data) throws Exception {
+        return Base64.encode(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后的16进制数据
+     * @throws Exception 异常
+     */
+    public static String encryptHexByPrivateKey(String privateKey, String data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后的16进制数据
+     * @throws Exception 异常
+     */
+    public static String encryptHexByPrivateKey(PrivateKey privateKey, String data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后的16进制数据
+     * @throws Exception 异常
+     */
+    public static String encryptHexByPrivateKey(String privateKey, byte[] data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥
+     * @param data 数据
+     * @return 加密后的16进制数据
+     * @throws Exception 异常
+     */
+    public static String encryptHexByPrivateKey(PrivateKey privateKey, byte[] data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPrivateKey(privateKey, data));
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥字符串
+     * @param data 数据
+     * @return 加密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] encryptByPrivateKey(String privateKey, String data) throws Exception {
+        return encryptByPrivateKey(privateKey, data.getBytes());
+    }
+
+    /**
+     * 私钥加密数据
+     *
+     * @param privateKey 私钥字符串
+     * @param data 数据
+     * @return 加密后的数据
+     * @throws Exception 异常
+     */
+    public static byte[] encryptByPrivateKey(PrivateKey privateKey, String data) throws Exception {
+        return encryptByPrivateKey(privateKey, data.getBytes());
     }
 
     /**
@@ -408,7 +775,7 @@ public class RSAUtils {
      *
      * @param publicKey 公钥字符串
      * @param data 待加密的字符串
-     * @return 加密后的字符串
+     * @return 加密后的符合网络安全的base64字符串
      * @throws Exception 异常
      */
     public static String encryptBase64ToNetByPublicKey(String publicKey, String data) throws Exception {
@@ -420,10 +787,34 @@ public class RSAUtils {
      *
      * @param publicKey 公钥
      * @param data 待加密的字符串
-     * @return 加密后的字符串
+     * @return 加密后的符合网络安全的base64字符串
      * @throws Exception 异常
      */
     public static String encryptBase64ToNetByPublicKey(PublicKey publicKey, String data) throws Exception {
+        return encryptBase64ByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    }
+
+    /**
+     * 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的符合网络安全的base64字符串
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ToNetByPublicKey(String publicKey, byte[] data) throws Exception {
+        return encryptBase64ByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
+    }
+
+    /**
+     * 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的符合网络安全的base64字符串
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ToNetByPublicKey(PublicKey publicKey, byte[] data) throws Exception {
         return encryptBase64ByPublicKey(publicKey, data).replace("+", "-").replace("/", "_").replace("=", "");
     }
 
@@ -432,11 +823,11 @@ public class RSAUtils {
      *
      * @param publicKey 公钥字符串
      * @param data 待加密的字符串
-     * @return 加密后字符串
+     * @return 加密后的base64字符串
      * @throws Exception 异常
      */
     public static String encryptBase64ByPublicKey(String publicKey, String data) throws Exception {
-        return Base64.encode(encryptByPublicKey(getPublicKey(publicKey), data.getBytes()));
+        return Base64.encode(encryptByPublicKey(getPublicKey(publicKey), data));
     }
 
     /**
@@ -444,11 +835,107 @@ public class RSAUtils {
      *
      * @param publicKey 公钥
      * @param data 待加密的字符串
-     * @return 加密后字符串
+     * @return 加密后的base64字符串
      * @throws Exception 异常
      */
     public static String encryptBase64ByPublicKey(PublicKey publicKey, String data) throws Exception {
-        return Base64.encode(encryptByPublicKey(publicKey, data.getBytes()));
+        return Base64.encode(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的base64字符串
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ByPublicKey(String publicKey, byte[] data) throws Exception {
+        return Base64.encode(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的base64字符串
+     * @throws Exception 异常
+     */
+    public static String encryptBase64ByPublicKey(PublicKey publicKey, byte[] data) throws Exception {
+        return Base64.encode(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的16进制字符串
+     * @throws Exception
+     */
+    public static String encryptHexByPublicKey(String publicKey, String data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的16进制字符串
+     * @throws Exception
+     */
+    public static String encryptHexByPublicKey(PublicKey publicKey, String data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的16进制字符串
+     * @throws Exception
+     */
+    public static String encryptHexByPublicKey(String publicKey, byte[] data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥
+     * @param data 待加密的数据
+     * @return 加密后的16进制字符串
+     * @throws Exception
+     */
+    public static String encryptHexByPublicKey(PublicKey publicKey, byte[] data) throws Exception {
+        return HexUtils.bytes2HexString(encryptByPublicKey(publicKey, data));
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥字符串
+     * @param data 待加密的数据
+     * @return 加密后的数据
+     * @throws Exception 解密异常
+     */
+    public static byte[] encryptByPublicKey(String publicKey, String data) throws Exception {
+        return encryptByPublicKey(publicKey, data.getBytes());
+    }
+
+    /**
+     * 公钥加密数据
+     *
+     * @param publicKey 公钥字符串
+     * @param data 待加密的数据
+     * @return 加密后的数据
+     * @throws Exception 解密异常
+     */
+    public static byte[] encryptByPublicKey(PublicKey publicKey, String data) throws Exception {
+        return encryptByPublicKey(publicKey, data.getBytes());
     }
 
     /**

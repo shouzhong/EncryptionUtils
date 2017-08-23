@@ -52,24 +52,12 @@ byte[] encryptHmac(final byte[] data, final byte[] key) | HmacMD5加密</br>@par
 #### RSAUtils
 方法名 | 说明
 ------------ | -------------
+密钥
 KeyPair generateRSAKeyPair(int keyLength) | 随机生成RSA密钥对</br>@param keyLength 密钥长度，范围：512～2048 一般1024</br>@return 密钥对
 PrivateKey getPrivateKey(String privateKey) | 获取私钥</br>@param privateKey 私钥字符串</br>@return 私钥
 PrivateKey getPrivateKey(byte[] privateKey) | 获取私钥</br>@param privateKey 私钥数据</br>@return 私钥
 PublicKey getPublicKey(String publicKey) | 获取公钥</br>@param publicKey 公钥字符串</br>@return 公钥
 PublicKey getPublicKey(byte[] publicKey) | 获取公钥</br>@param publicKey 公钥数据</br>@return 公钥
-String decryptBase64FromNetByPrivateKey(String privateKey, String encrypted) | 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param privateKey 私钥字符串</br>@param encrypted 加密的数据</br>@return 解密后的字符串
-String decryptBase64FromNetByPrivateKey(PrivateKey privateKey, String encrypted) | 解密RSA公钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param privateKey 私钥</br>@param encrypted 加密的数据</br>@return 解密后的字符串
-String decryptBase64ByPrivateKey(String privateKey, String encrypted) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥字符串</br>@param encrypted 加密的字符串</br>@return 解密后的字符串
-String decryptBase64ByPrivateKey(PrivateKey privateKey, String encrypted) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥</br>@param encrypted 加密的字符串</br>@return 解密后的字符串
-byte[] decryptByPrivateKey(String privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥字符串</br>@param encryptedData 加密的数据</br>@return 解密后的数据
-byte[] decryptByPrivateKey(PrivateKey privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥</br>@param encryptedData 加密的数据</br>@return 解密后的数据
-String decryptBase64FromNetByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
-String decryptBase64FromNetByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
-String decryptBase64ByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
-String decryptBase64ByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
-byte[] decryptByPublicKey(String publicKey, byte[] encryptedData | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的数据
-byte[] decryptByPublicKey(PublicKey publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的数据</br>@return 解密的数据
-
 
 #### SHA1Utils
 #### SHA256Utils
