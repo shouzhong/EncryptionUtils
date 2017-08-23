@@ -127,6 +127,37 @@ byte[] encryptByPublicKey(PublicKey publicKey, String data) | 公钥加密数据
 byte[] encryptByPublicKey(String publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥字符串</br>@param data 待加密的数据</br>@return 加密后的数据
 byte[] encryptByPublicKey(PublicKey publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的数据
 #### SHA1Utils
+方法名 | 说明
+------------ | -------------
+String encrypt2String(final String data) | SHA1加密</br>@param data 明文字符串</br>@return 16进制密文
+String encrypt2String(final byte[] data) | SHA1加密</br>@param data 明文字节数组</br>@return 16进制密文
+byte[] encrypt(final byte[] data) | SHA1加密</br>@param data 明文字节数组</br>@return 密文字节数组
+String encryptHmac2String(final String data, final String key) | HmacSHA1加密</br>@param data 明文字符串</br>@param key  秘钥</br>@return 16进制密文
+String encryptHmac2String(final byte[] data, final byte[] key) | HmacSHA1加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 16进制密文
+byte[] encryptHmac(final byte[] data, final byte[] key) | HmacSHA1加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### SHA256Utils
+方法名 | 说明
+------------ | -------------
+String encrypt2String(final String data) | SHA256加密</br>@param data 明文字符串</br>@return 16进制密文
+String encrypt2String(final byte[] data) | SHA256加密</br>@param data 明文字节数组</br>@return 16进制密文
+byte[] encrypt(final byte[] data) | SHA256加密</br>@param data 明文字节数组</br>@return 密文字节数组
+String encryptHmac2String(final String data, final String key) | HmacSHA256加密</br>@param data 明文字符串</br>@param key  秘钥</br>@return 16进制密文
+String encryptHmac2String(final byte[] data, final byte[] key) | HmacSHA256加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 16进制密文
+byte[] encryptHmac(final byte[] data, final byte[] key) | HmacSHA256加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### SHA384Utils
+方法名 | 说明
+------------ | -------------
+String encrypt2String(final String data) | SHA384加密</br>@param data 明文字符串</br>@return 16进制密文
+String encrypt2String(final byte[] data) | SHA384加密</br>@param data 明文字节数组</br>@return 16进制密文
+byte[] encrypt(final byte[] data) | SHA384加密</br>@param data 明文字节数组</br>@return 密文字节数组
+String encryptHmac2String(final String data, final String key) | HmacSHA384加密</br>@param data 明文字符串</br>@param key  秘钥</br>@return 16进制密文
+String encryptHmac2String(final byte[] data, final byte[] key) | HmacSHA384加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 16进制密文
+byte[] encryptHmac(final byte[] data, final byte[] key) | HmacSHA384加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### SHA512Utils
+------------ | -------------
+String encrypt2String(final String data) | SHA512加密</br>@param data 明文字符串</br>@return 16进制密文
+String encrypt2String(final byte[] data) | SHA512加密</br>@param data 明文字节数组</br>@return 16进制密文
+byte[] encrypt(final byte[] data) | SHA512加密</br>@param data 明文字节数组</br>@return 密文字节数组
+String encryptHmac2String(final String data, final String key) | HmacSHA512加密</br>@param data 明文字符串</br>@param key  秘钥</br>@return 16进制密文
+String encryptHmac2String(final byte[] data, final byte[] key) | HmacSHA512加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 16进制密文
+byte[] encryptHmac(final byte[] data, final byte[] key) | HmacSHA512加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
