@@ -154,6 +154,7 @@ String encryptHmac2String(final String data, final String key) | HmacSHA384加�
 String encryptHmac2String(final byte[] data, final byte[] key) | HmacSHA384加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 16进制密文
 byte[] encryptHmac(final byte[] data, final byte[] key) | HmacSHA384加密</br>@param data 明文字节数组</br>@param key  秘钥</br>@return 密文字节数组
 #### SHA512Utils
+方法名 | 说明
 ------------ | -------------
 String encrypt2String(final String data) | SHA512加密</br>@param data 明文字符串</br>@return 16进制密文
 String encrypt2String(final byte[] data) | SHA512加密</br>@param data 明文字节数组</br>@return 16进制密文
