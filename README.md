@@ -93,6 +93,22 @@ String decrypt2StringByPublicKey(PublicKey publicKey, byte[] encryptedData) | �
 byte[] decryptByPublicKey(String publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的数据
 byte[] decryptByPublicKey(PublicKey publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的数据</br>@return 解密的数据
 私钥加密
+String encryptBase64ToNetByPrivateKey(String privateKey, String data) | 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""</br>@param privateKey 私钥字符串</br>@param data 数据</br>@return 加密后符合网络安全的base64数据
+String encryptBase64ToNetByPrivateKey(PrivateKey privateKey, String data) | 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""）</br>@param privateKey</br>@param data 数据</br>@return 加密后符合网络安全的base64数据
+String encryptBase64ToNetByPrivateKey(String privateKey, byte[] data) | 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""）</br>@param privateKey</br>@param data 数据</br>@return 加密后符合网络安全的base64数据
+String encryptBase64ToNetByPrivateKey(PrivateKey privateKey, byte[] data) | 私钥加密成符合网络安全的字符串（将"+"替换成"-"，"/"替换成"_","="替换成""）</br>@param privateKey</br>@param data 数据</br>@return 加密后符合网络安全的base64数据
+String encryptBase64ByPrivateKey(String privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后base64的数据
+String encryptBase64ByPrivateKey(PrivateKey privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后base64的数据
+String encryptBase64ByPrivateKey(String privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后base64的数据
+String encryptBase64ByPrivateKey(PrivateKey privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后base64的数据
+String encryptHexByPrivateKey(String privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的16进制数据
+String encryptHexByPrivateKey(PrivateKey privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的16进制数据
+String encryptHexByPrivateKey(String privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的16进制数据
+String encryptHexByPrivateKey(PrivateKey privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的16进制数据
+byte[] encryptByPrivateKey(String privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥字符串</br>@param data 数据</br>@return 加密后的数据
+byte[] encryptByPrivateKey(PrivateKey privateKey, String data) | 私钥加密数据</br>@param privateKey 私钥字符串</br>@param data 数据</br>@return 加密后的数据
+byte[] encryptByPrivateKey(String privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥字符串</br>@param data 数据</br>@return 加密后的数据
+byte[] encryptByPrivateKey(PrivateKey privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的数据
 公钥加密
 
 #### SHA1Utils
