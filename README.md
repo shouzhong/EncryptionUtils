@@ -110,7 +110,22 @@ byte[] encryptByPrivateKey(PrivateKey privateKey, String data) | 私钥加密数
 byte[] encryptByPrivateKey(String privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥字符串</br>@param data 数据</br>@return 加密后的数据
 byte[] encryptByPrivateKey(PrivateKey privateKey, byte[] data) | 私钥加密数据</br>@param privateKey 私钥</br>@param data 数据</br>@return 加密后的数据
 公钥加密
-
+String encryptBase64ToNetByPublicKey(String publicKey, String data) | 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥字符串</br>@param data 待加密的字符串</br>@return 加密后的符合网络安全的base64字符串
+String encryptBase64ToNetByPublicKey(PublicKey publicKey, String data) | 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param data 待加密的字符串</br>@return 加密后的符合网络安全的base64字符串
+String encryptBase64ToNetByPublicKey(String publicKey, byte[] data) | 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的符合网络安全的base64字符串
+String encryptBase64ToNetByPublicKey(PublicKey publicKey, byte[] data) | 公钥加密成符合网络安全的数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的符合网络安全的base64字符串
+String encryptBase64ByPublicKey(String publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥字符串</br>@param data 待加密的字符串</br>@return 加密后的base64字符串
+String encryptBase64ByPublicKey(PublicKey publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的字符串</br>@return 加密后的base64字符串
+String encryptBase64ByPublicKey(String publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的base64字符串
+String encryptBase64ByPublicKey(PublicKey publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的base64字符串
+String encryptHexByPublicKey(String publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的16进制字符串
+String encryptHexByPublicKey(PublicKey publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的16进制字符串
+String encryptHexByPublicKey(String publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的16进制字符串
+String encryptHexByPublicKey(PublicKey publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的16进制字符串
+byte[] encryptByPublicKey(String publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥字符串</br>@param data 待加密的数据</br>@return 加密后的数据
+byte[] encryptByPublicKey(PublicKey publicKey, String data) | 公钥加密数据</br>@param publicKey 公钥字符串</br>@param data 待加密的数据</br>@return 加密后的数据
+byte[] encryptByPublicKey(String publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥字符串</br>@param data 待加密的数据</br>@return 加密后的数据
+byte[] encryptByPublicKey(PublicKey publicKey, byte[] data) | 公钥加密数据</br>@param publicKey 公钥</br>@param data 待加密的数据</br>@return 加密后的数据
 #### SHA1Utils
 #### SHA256Utils
 #### SHA384Utils
