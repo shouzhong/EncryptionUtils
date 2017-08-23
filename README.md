@@ -2,9 +2,9 @@
 ## 说明
 加密工具类，这里收集了一些常用的加密方法，包括AES，DES，3DES，MD5，RSA，SHA1，SHA256，SHA384，SHA512。
 ## 使用
-### 依赖（审核中）
+### 依赖
 ```
-compile 'com.wuyifeng:EncryptionUtils:1.0.0'
+compile 'com.wuyifeng:EncryptionUtils:1.0.1'
 ```
 ### 使用说明
 以下所有方法都为静态方法。
@@ -75,9 +75,23 @@ String decrypt2StringByPrivateKey(String privateKey, byte[] encryptedData) | 解
 String decrypt2StringByPrivateKey(PrivateKey privateKey, byte[] encryptedData) | 解密RSA公钥加密过的字符串</br>@param privateKey 私钥字符串</br>@param encryptedData 加密的数据</br>@return 解密后的数据
 byte[] decryptByPrivateKey(String privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥字符串</br>@param encryptedData 加密的数据</br>@return 解密后的数据
 byte[] decryptByPrivateKey(PrivateKey privateKey, byte[] encryptedData) | 解密RSA公钥加密过的数据</br>@param privateKey 私钥</br>@param encryptedData 加密的数据</br>@return 解密后的数据
-
-
 公钥解密
+String decryptBase64ToStringFromNetByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptBase64ToStringFromNetByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+byte[] decryptBase64FromNetByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+byte[] decryptBase64FromNetByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过符合网络安全的base64数据(将"+"替换成"-"，"/"替换成"_","="替换成"")</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+String decryptBase64ToStringByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的base64数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptBase64ToStringByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的base64数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+byte[] decryptBase64ByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的base64数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+byte[] decryptBase64ByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的base64数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+String decryptHex2StringByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的16进制数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+String decryptHex2StringByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的16进制数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的字符串
+byte[] decryptHexByPublicKey(String publicKey, String encryptedData) | 解密RSA私钥加密过的16进制数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+byte[] decryptHexByPublicKey(PublicKey publicKey, String encryptedData) | 解密RSA私钥加密过的16进制数据</br>@param publicKey 公钥</br>@param encryptedData 加密的字符串</br>@return 解密的数据
+String decrypt2StringByPublicKey(String publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的字符串
+String decrypt2StringByPublicKey(PublicKey publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的字符串
+byte[] decryptByPublicKey(String publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥字符串</br>@param encryptedData 加密的数据</br>@return 解密的数据
+byte[] decryptByPublicKey(PublicKey publicKey, byte[] encryptedData) | 解密RSA私钥加密过的数据</br>@param publicKey 公钥</br>@param encryptedData 加密的数据</br>@return 解密的数据
 私钥加密
 公钥加密
 

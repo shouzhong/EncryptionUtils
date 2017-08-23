@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    compile project(':lib')
+    compile 'com.wuyifeng:EncryptionUtils:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
 }
