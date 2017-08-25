@@ -20,6 +20,10 @@ import com.wyf.encrypt.DES3Utils;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 本demo为了减少代码量，所以所有操作都放在ui线程中运行，在实际开发中请尽量放在其它线程中运行
+ *
+ */
 public class SampleActivity extends AppCompatActivity {
 
     TextView tv;
